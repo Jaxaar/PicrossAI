@@ -5,7 +5,6 @@ public class PicrossWorld {
     private PicrossPuzzle puzzle;
     private ArrayList<boolean[]> colDomains;
     private ArrayList<boolean[]> rowDomains;
-    private int[][] knownEntries; // Int bc it needs to hold information about Yes/No/Unknown
 
 
     public PicrossWorld(PicrossPuzzle pz){
@@ -24,7 +23,7 @@ public class PicrossWorld {
 
 
 
-    
+
     public void AC3Forwarding(){
 
     }

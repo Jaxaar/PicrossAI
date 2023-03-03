@@ -3,8 +3,8 @@ import java.util.ArrayList;
 public class PicrossPuzzle {
 
     private boolean[][] board; // Could be int??
-    private ArrayList<PiClue> colDescriptors;
-    private ArrayList<PiClue> rowDescriptors;
+    private ArrayList<PiClue> colClues;
+    private ArrayList<PiClue> rowClues;
 
     public PicrossPuzzle(int rows, int cols){
 
