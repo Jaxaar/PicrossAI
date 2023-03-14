@@ -63,21 +63,60 @@ public class PicrossPuzzle {
     @Override
     public String toString() {
         StringBuilder out = new StringBuilder();
+        //Get the sizes of the max number of clues for appropriate spacing
+        int maxColClues = 0;
+        for(PiClue pc: colClues){
+            maxColClues = Math.max(pc.size(), maxColClues);
+        }
+        int maxRowClues = 0;
+        for(PiClue pc: rowClues){
+            maxRowClues = Math.max(pc.size(), maxRowClues);
+        }
+
+        out.append(getColClueString(maxColClues,maxRowClues));
+
+        // Print Board
         for(int i = 0; i < board.length; i++){
+            out.append(getRowClueString(maxRowClues, i));
             for(int j = 0; j < board[0].length; j++){
                 if(board[i][j]){
-                    System.out.print(1 + ", ");
+                    out.append("X").append(" ");
                 }
                 else{
-                    System.out.print(0 + ", ");
+                    out.append("O").append(" ");
                 }
             }
-            System.out.println();
+            out.append("\n");
         }
-        out.append("Rows: ").append(rowClues).append("\n");
-        out.append("Cols: ").append(colClues);
 
         return out.toString();
+    }
+
+    private String getColClueString(int maxColClues, int maxRowClues){
+        StringBuilder out = new StringBuilder();
+
+        for(int i = 0; i < maxColClues; i++){
+            out.append(" ".repeat(maxRowClues*2 + 1)).append("|");
+            for(int j = 0; j < colClues.size(); j++) {
+                PiClue clue = colClues.get(j);
+                if (clue.size() - maxColClues + i >= 0){
+                    out.append(clue.getClues().get(clue.size() - maxColClues + i));
+                }
+                else {
+                    out.append(" ");
+                }
+                out.append(" ");
+            }
+
+            out.append("\n");
+        }
+        out.append("_".repeat((maxRowClues*2 + 1))).append("|").append("_".repeat(colClues.size()*2)).append("\n");
+
+        return out.toString();
+    }
+
+    private String getRowClueString(int maxRowClues, int row){
+        return String.format("%" + ((maxRowClues)*2) + "s |", getRowClue(row));
     }
 
     private void fillClues(){
@@ -143,11 +182,18 @@ public class PicrossPuzzle {
             return clues;
         }
 
+        public int size(){
+            return clues.size();
+        }
+
         @Override
         public String toString() {
-            return "PiClue{" +
-                    "clues=" + clues +
-                    '}';
+            StringBuilder out = new StringBuilder();
+            for(int i = 0; i< clues.size(); i++){
+                out.append(clues.get(i)).append(" ");
+            }
+
+            return out.toString();
         }
     }
 }
