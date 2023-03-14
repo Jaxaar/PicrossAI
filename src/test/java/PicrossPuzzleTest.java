@@ -10,4 +10,18 @@ class PicrossPuzzleTest {
         System.out.println(board.toString());
         assert true;
     }
+
+    @Test
+    void testPicrossPuzzle() {
+        try {
+            PicrossPuzzle board = new PicrossPuzzle("picross10x10.csv");
+            System.out.println(board.toString());
+            assert true;
+
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+            assert false;
+        }
+    }
 }

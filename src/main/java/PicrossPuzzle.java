@@ -1,6 +1,9 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 public class PicrossPuzzle {
 
@@ -20,7 +23,32 @@ public class PicrossPuzzle {
         colClues = new ArrayList<>();
         rowClues = new ArrayList<>();
         fillClues();
+    }
 
+    public PicrossPuzzle(String csvFileName) throws FileNotFoundException {
+        Scanner scn = new Scanner(new File(csvFileName));
+        scn.useDelimiter(",\\s*");
+
+        int rows = Integer.parseInt(scn.next());
+        System.out.println(rows + "r");
+
+        int cols = Integer.parseInt(scn.next());
+
+        board = new boolean[rows][cols];
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < cols; j++){
+                if(Integer.parseInt(scn.next()) == 0){
+                    board[i][j] = false;
+                }
+                else{
+                    board[i][j] = true;
+                }
+            }
+        }
+
+        colClues = new ArrayList<>();
+        rowClues = new ArrayList<>();
+        fillClues();
     }
 
     //Deep-copy
