@@ -23,15 +23,15 @@ public class PicrossSolver {
      * @param puzzle The puzzle that is being double checked for correctness.
      * @return True if valid solution, False if not valid
      */
-    public boolean checkAnswer(PicrossPuzzle puzzle)
+    public boolean checkAnswer(PicrossPuzzle puzzle, Boolean[][] board)
     {
         //Reference code:
         //PicrossPuzzle pz = new PicrossPuzzle(10,10);
         //pz.getColClue(2).getClue(2);
         //boolean b = pz.getBoard()[1][2];
 
-        int numRows = puzzle.getRows();
-        int numCols = puzzle.getCols();
+        int numRows = board.length;
+        int numCols = board[1].length;
 
         //Check Columns
         for(int i=0; i<numCols; i++)
@@ -43,7 +43,7 @@ public class PicrossSolver {
 
             for(int j=0; j<numRows; j++)
             {
-                if(puzzle.getBoard()[j][i]) //If space is true
+                if(board[j][i]) //If space is true
                 {
                     if(outOfClues) //If there are more true sections than should be.
                     {
@@ -91,7 +91,7 @@ public class PicrossSolver {
 
             for(int j=0; j<numCols; j++)
             {
-                if(puzzle.getBoard()[i][j]) //If space is true
+                if(board[i][j]) //If space is true
                 {
                     if(outOfClues) //If there are more true sections than should be.
                     {
