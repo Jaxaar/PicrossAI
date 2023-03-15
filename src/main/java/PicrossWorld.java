@@ -3,8 +3,8 @@ import java.util.ArrayList;
 public class PicrossWorld {
 
     private PicrossPuzzle puzzle;
-    private ArrayList<boolean[]> colDomains;
-    private ArrayList<boolean[]> rowDomains;
+    private ArrayList<Domain> colDomains;
+    private ArrayList<Domain> rowDomains;
 
 
     public PicrossWorld(PicrossPuzzle pz){
@@ -28,6 +28,27 @@ public class PicrossWorld {
 
     }
 
+
+
+
+
+    class Domain{
+
+        private ArrayList<boolean[]> dom;
+
+        public Domain(PicrossPuzzle.PiClue pc){
+            boolean domainsRemain = true;
+            while(domainsRemain){
+
+            }
+            System.out.println("Domain Constructor Not Written YET!!!");
+        }
+
+        public boolean[] getInstance(int i){
+            return dom.get(i);
+        }
+
+    }
 
 
 

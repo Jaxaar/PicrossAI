@@ -5,6 +5,13 @@ public class PicrossSolver {
     public static boolean[][] solveBacktrack(PicrossPuzzle puzzle){
         boolean[][] board = new boolean[puzzle.getRows()][puzzle.getCols()];
 
+        // While (worldWorks)
+        //       AC3  thisWorld.ac3Forwarding();
+        //       Choose a world
+        //       Backtrack?
+
+
+
 
 
         return board;
