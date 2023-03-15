@@ -30,8 +30,6 @@ public class PicrossPuzzle {
         scn.useDelimiter(",\\s*");
 
         int rows = Integer.parseInt(scn.next());
-        System.out.println(rows + "r");
-
         int cols = Integer.parseInt(scn.next());
 
         board = new boolean[rows][cols];
@@ -194,7 +192,7 @@ public class PicrossPuzzle {
     }
 
 
-    class PiClue {
+    static class PiClue {
 
         private ArrayList<Integer> clues;
 

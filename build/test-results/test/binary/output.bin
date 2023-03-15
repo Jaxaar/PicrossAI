@@ -1,0 +1,80 @@
+0
+H[false, false, false, false, false, false, false, false, false, false]
+1
+Last1: 0 lastCluePlacement: 3
+
+Call PC0
+1
+G[true, false, false, false, false, false, false, false, false, false]
+2
+Last1: 1 lastCluePlacement: 5
+
+Call PC2
+2
+E[true, false, true, true, false, false, false, false, false, false]
+3
+Last1: 4 lastCluePlacement: 7
+
+Call PC5
+3
+B[true, false, true, true, false, true, true, true, false, false]
+
+Call PC6
+3
+B[true, false, true, true, false, false, true, true, true, false]
+
+Call PC3
+2
+E[true, false, false, true, true, false, false, false, false, false]
+3
+Last1: 5 lastCluePlacement: 7
+
+Call PC6
+3
+B[true, false, false, true, true, false, true, true, true, false]
+
+Call PC4
+2
+E[true, false, false, false, true, true, false, false, false, false]
+3
+Last1: 6 lastCluePlacement: 7
+
+Call PC1
+1
+G[false, true, false, false, false, false, false, false, false, false]
+2
+Last1: 2 lastCluePlacement: 5
+
+Call PC3
+2
+E[false, true, false, true, true, false, false, false, false, false]
+3
+Last1: 5 lastCluePlacement: 7
+
+Call PC6
+3
+B[false, true, false, true, true, false, true, true, true, false]
+
+Call PC4
+2
+E[false, true, false, false, true, true, false, false, false, false]
+3
+Last1: 6 lastCluePlacement: 7
+
+Call PC2
+1
+G[false, false, true, false, false, false, false, false, false, false]
+2
+Last1: 3 lastCluePlacement: 5
+
+Call PC4
+2
+E[false, false, true, false, true, true, false, false, false, false]
+3
+Last1: 6 lastCluePlacement: 7
+'Domain Constructor Not Written YET!!!
+C{[true, false, true, true, false, true, true, true, false, false],
+B[true, false, true, true, false, false, true, true, true, false],
+B[true, false, false, true, true, false, true, true, true, false],
+C[false, true, false, true, true, false, true, true, true, false],}
+
