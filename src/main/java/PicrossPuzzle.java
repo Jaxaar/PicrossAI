@@ -210,6 +210,10 @@ public class PicrossPuzzle {
             return clues;
         }
 
+        public int getClue(int i){
+            return clues.get(i);
+        }
+
         public int size(){
             return clues.size();
         }
