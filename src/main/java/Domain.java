@@ -57,7 +57,7 @@ public class Domain {
         }
         System.out.println("Last1: " + last1 + " lastCluePlacement: " + lastCluePlacement);
         //Puts the current clue in every possible location and recurses
-        for(int i = last1 + space; i < lastCluePlacement; i++){
+        for(int i = last1 + space; i <= lastCluePlacement; i++){
             boolean[] newPos = possibility.clone();
             newPos = fillInClue(i, currentClue, newPos);
             System.out.println("Call PC" + i);
