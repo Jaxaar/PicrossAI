@@ -132,4 +132,41 @@ public class PicrossSolver {
         return true; //If it made it this far everything is fine!
     }
 
+    /**
+     *
+     * @param rowDomain
+     * @param colDomain
+     * @return A 2D array of the board, as determined by the remaining domains.
+     * @throws Exception if there is more than one domain for a row or column
+     */
+    public Boolean[][] translateToArray(ArrayList<Domain> rowDomain, ArrayList<Domain> colDomain) throws Exception
+    {
+        for(int i=0; i<rowDomain.size(); i++)
+        {
+            if(rowDomain.get(i).getDomSize() != 1)
+            {
+                throw new Exception("Row " + i + "Domain not chosen");
+            }
+
+            if(colDomain.get(i).getDomSize() != 1)
+            {
+                throw new Exception("Column " + i + "Domain not chosen");
+            }
+        }
+
+        Boolean[][] board = new Boolean[rowDomain.size()][colDomain.size()];
+
+        for(int i=0; i<rowDomain.size(); i++)
+        {
+            Domain d = rowDomain.get(i);
+
+            for(int j=0; j<d.getDomSize(); j++)
+            {
+                board[i][j] = d.getInstance(0)[j];
+            }
+        }
+
+        return board;
+    }
+
 }
