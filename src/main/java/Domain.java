@@ -20,7 +20,7 @@ public class Domain {
 //            for(int i=0; i<pc.size(); i++) {
 //                rowInstance = formInstance(pc.getClue(i), initStart, rowInstance);
 //            }
-        System.out.println("Domain Constructor Not Written YET!!!");
+        //System.out.println("Domain Constructor Not Written YET!!!");
     }
 
 
@@ -87,4 +87,6 @@ public class Domain {
         out.replace(out.length()-1,out.length()-1, "}");
         return out.toString();
     }
+
+    public int getDomSize() { return dom.size(); }
 }
