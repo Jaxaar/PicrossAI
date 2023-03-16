@@ -1,74 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="DomainTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-03-15T22:46:26" hostname="5CG024DF09" time="0.042">
+<testsuite name="DomainTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-03-16T15:34:31" hostname="5CG024DF09" time="0.048">
   <properties/>
-  <testcase name="fillInClueTest()" classname="DomainTest" time="0.017"/>
-  <testcase name="placeClueTest()" classname="DomainTest" time="0.024"/>
-  <system-out><![CDATA[0
-[false, false, false, false, false, false, false, false, false, false]
-1
-Last1: 0 lastCluePlacement: 3
-Call PC0
-1
-[true, false, false, false, false, false, false, false, false, false]
-2
-Last1: 1 lastCluePlacement: 5
-Call PC2
-2
-[true, false, true, true, false, false, false, false, false, false]
-3
-Last1: 4 lastCluePlacement: 7
-Call PC5
-3
-[true, false, true, true, false, true, true, true, false, false]
-Call PC6
-3
-[true, false, true, true, false, false, true, true, true, false]
-Call PC3
-2
-[true, false, false, true, true, false, false, false, false, false]
-3
-Last1: 5 lastCluePlacement: 7
-Call PC6
-3
-[true, false, false, true, true, false, true, true, true, false]
-Call PC4
-2
-[true, false, false, false, true, true, false, false, false, false]
-3
-Last1: 6 lastCluePlacement: 7
-Call PC1
-1
-[false, true, false, false, false, false, false, false, false, false]
-2
-Last1: 2 lastCluePlacement: 5
-Call PC3
-2
-[false, true, false, true, true, false, false, false, false, false]
-3
-Last1: 5 lastCluePlacement: 7
-Call PC6
-3
-[false, true, false, true, true, false, true, true, true, false]
-Call PC4
-2
-[false, true, false, false, true, true, false, false, false, false]
-3
-Last1: 6 lastCluePlacement: 7
-Call PC2
-1
-[false, false, true, false, false, false, false, false, false, false]
-2
-Last1: 3 lastCluePlacement: 5
-Call PC4
-2
-[false, false, true, false, true, true, false, false, false, false]
-3
-Last1: 6 lastCluePlacement: 7
-Domain Constructor Not Written YET!!!
-{[true, false, true, true, false, true, true, true, false, false],
+  <testcase name="fillInClueTest()" classname="DomainTest" time="0.037"/>
+  <testcase name="placeClueTest()" classname="DomainTest" time="0.01"/>
+  <system-out><![CDATA[{[true, false, true, true, false, true, true, true, false, false],
 [true, false, true, true, false, false, true, true, true, false],
+[true, false, true, true, false, false, false, true, true, true],
 [true, false, false, true, true, false, true, true, true, false],
-[false, true, false, true, true, false, true, true, true, false],}
+[true, false, false, true, true, false, false, true, true, true],
+[true, false, false, false, true, true, false, true, true, true],
+[false, true, false, true, true, false, true, true, true, false],
+[false, true, false, true, true, false, false, true, true, true],
+[false, true, false, false, true, true, false, true, true, true],
+[false, false, true, false, true, true, false, true, true, true],}
 
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>

@@ -33,8 +33,6 @@ public class Domain {
     }
 
     public void placeClue(PicrossPuzzle.PiClue pc, int cluesHandled, int last1, boolean[] possibility){
-        System.out.println(cluesHandled);
-        System.out.println(Arrays.toString(possibility));
         if(cluesHandled >= pc.size()){
             dom.add(possibility);
             return;
@@ -49,18 +47,17 @@ public class Domain {
         if(minSpacesRequired == -1){
             minSpacesRequired = 0;
         }
-        System.out.println(currentClue);
         int lastCluePlacement = possibility.length - minSpacesRequired - currentClue;
         int space = 1;
         if(cluesHandled == 0){
             space = 0;
         }
-        System.out.println("Last1: " + last1 + " lastCluePlacement: " + lastCluePlacement);
+        //System.out.println("Last1: " + last1 + " lastCluePlacement: " + lastCluePlacement);
         //Puts the current clue in every possible location and recurses
         for(int i = last1 + space; i <= lastCluePlacement; i++){
             boolean[] newPos = possibility.clone();
             newPos = fillInClue(i, currentClue, newPos);
-            System.out.println("Call PC" + i);
+            //System.out.println("Call PC" + i);
             placeClue(pc, cluesHandled+1, i + currentClue, newPos);
         }
 
