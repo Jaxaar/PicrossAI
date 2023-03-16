@@ -14,7 +14,7 @@ public class PicrossWorld {
         //Add the column domains for that specific board
         for(int i = 0; i<pz.getCols(); i++) {
             Domain newDom = new Domain(pz.getColClue(i), pz.getCols());
-            colDomains.add(newDom);//
+            colDomains.add(newDom);
         }
 
         //Add the row domains for that specific board
