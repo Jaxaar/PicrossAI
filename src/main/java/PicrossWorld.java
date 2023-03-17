@@ -50,6 +50,10 @@ public class PicrossWorld {
         return rowDomains;
     }
 
+    public void setColDomains(ArrayList<Domain> d) { colDomains = d; }
+
+    public void setRowDomains(ArrayList<Domain> d) { rowDomains = d; }
+
     public PicrossPuzzle getPuzzle() {
         return puzzle;
     }

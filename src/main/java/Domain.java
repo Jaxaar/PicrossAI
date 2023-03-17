@@ -23,6 +23,11 @@ public class Domain {
         //System.out.println("Domain Constructor Not Written YET!!!");
     }
 
+    public Domain(boolean[] instance) {
+        dom.add(instance);
+        size = 1;
+    }
+
 
     public boolean[] getInstance(int i){
         return dom.get(i);

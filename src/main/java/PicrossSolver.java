@@ -20,31 +20,64 @@ public class PicrossSolver {
             }
         }
 
-        boolean[][] finalResult = solveBacktrack(trialWorld);
+        PicrossWorld finalResult = solveBacktrack(trialWorld);
         if (finalResult == null) {
             throw new Exception("Backtracking has deemed this to be impossible, something went wrong.");
         }
 
-        return finalResult;
+        return null; //TODO: NEED TO FIX THIS
     }
 
-    public static boolean[][] solveBacktrack(PicrossWorld world) {
-        boolean[][] board = new boolean[world.getPuzzle().getRows()][world.getPuzzle().getCols()];
-        try {
-            board = translateToArray(world.getRowDomains(), world.getColDomains());
-        }
-        catch(Exception e) {
-            return null;
+    public static PicrossWorld solveBacktrack(PicrossWorld world) {
+        world.AC3Forwarding();
+
+        ArrayList<Domain> worldAllCols = world.getColDomains();
+        ArrayList<Domain> worldAllRows = world.getRowDomains();
+        int colPossibilityCount = 0;
+        int rowPossibilityCount = 0;
+        for (int i = 0; i<worldAllCols.size(); i++) {
+            Domain tempDom = worldAllCols.get(i);
+            if (tempDom.getDomSize() < 1) {
+                return null; //If any of them are equal to size 0, then it won't work.
+            }
+            colPossibilityCount += tempDom.getDomSize();
         }
 
-        if (checkAnswer(world.getPuzzle(), board)) {
-            return board;
+        for (int i = 0; i<worldAllRows.size(); i++) {
+            Domain tempDom = worldAllRows.get(i);
+            if (tempDom.getDomSize() < 1) {
+                return null; //If any of them are equal to size 0, then it won't work.
+            }
+            rowPossibilityCount += tempDom.getDomSize();
+        }
+
+        if (colPossibilityCount == worldAllCols.size() && rowPossibilityCount == worldAllRows.size()) {
+            return world; //BASE CASE BAYEBEEE
         }
 
         //ADD THE REST OF THE BACKTRACK CALC HERE (NOTE SOME OF ABOVE MAY BE DUE TO CHANGE)
         //ADD THE REST OF THE BACKTRACK CALC HERE (NOTE SOME OF ABOVE MAY BE DUE TO CHANGE)
         //ADD THE REST OF THE BACKTRACK CALC HERE (NOTE SOME OF ABOVE MAY BE DUE TO CHANGE)
-        return solveBacktrack(world);
+        for(int j = 0; j<world.getColDomains().size(); j++) {
+            Domain d = world.getColDomains().get(j);
+            for (int i = 0; i<d.getDomSize(); i++) {
+                //Make a new world, replace one domain with a single
+                PicrossWorld newWorld = new PicrossWorld(world);
+                ArrayList<Domain> getColDom = newWorld.getColDomains();
+                getColDom.remove(j);
+
+                boolean[] instance = d.getInstance(i);
+                Domain newDom = new Domain(instance);
+                getColDom.add(j, newDom);
+                newWorld.setColDomains(getColDom);
+
+                PicrossWorld temp = solveBacktrack(newWorld);
+                if (temp != null) {
+                    return temp;
+                }
+            }
+        }
+        return null;
     }
 
 
