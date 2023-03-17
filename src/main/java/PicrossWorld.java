@@ -1,5 +1,6 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -66,7 +67,7 @@ public class PicrossWorld {
     }
 
     public void AC3Forwarding() {
-        Queue<ArrayList<Domain>> q = new PriorityQueue<>();
+        Queue<ArrayList<Domain>> q = new LinkedList<>();
 
         q.add(rowDomains);
         q.add(colDomains);
