@@ -60,20 +60,22 @@ public class PicrossSolver {
         //ADD THE REST OF THE BACKTRACK CALC HERE (NOTE SOME OF ABOVE MAY BE DUE TO CHANGE)
         for(int j = 0; j<world.getColDomains().size(); j++) {
             Domain d = world.getColDomains().get(j);
-            for (int i = 0; i<d.getDomSize(); i++) {
-                //Make a new world, replace one domain with a single
-                PicrossWorld newWorld = new PicrossWorld(world);
-                ArrayList<Domain> getColDom = newWorld.getColDomains();
-                getColDom.remove(j);
+            if (d.getDomSize() > 1) {
+                for (int i = 0; i < d.getDomSize(); i++) {
+                    //Make a new world, replace one domain with a single
+                    PicrossWorld newWorld = new PicrossWorld(world);
+                    ArrayList<Domain> getColDom = newWorld.getColDomains();
+                    getColDom.remove(j);
 
-                boolean[] instance = d.getInstance(i);
-                Domain newDom = new Domain(instance);
-                getColDom.add(j, newDom);
-                newWorld.setColDomains(getColDom);
+                    boolean[] instance = d.getInstance(i);
+                    Domain newDom = new Domain(instance);
+                    getColDom.add(j, newDom);
+                    newWorld.setColDomains(getColDom);
 
-                PicrossWorld temp = solveBacktrack(newWorld);
-                if (temp != null) {
-                    return temp;
+                    PicrossWorld temp = solveBacktrack(newWorld);
+                    if (temp != null) {
+                        return temp;
+                    }
                 }
             }
         }
