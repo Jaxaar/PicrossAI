@@ -3,29 +3,8 @@ import java.util.ArrayList;
 public class PicrossSolver {
     public static boolean[][] solveFullPuzzle(PicrossPuzzle puzzle) throws Exception {
         PicrossWorld trialWorld = new PicrossWorld(puzzle);
-        trialWorld.AC3Forwarding();
-        ArrayList<Domain> worldCols = trialWorld.getColDomains();
-        ArrayList<Domain> worldRows = trialWorld.getRowDomains();
-        for (int i = 0; i<worldCols.size(); i++) {
-            Domain tempDom = worldCols.get(i);
-            if (tempDom.getDomSize() < 1) {
-                throw new Exception("AC3 has deemed this to be impossible, something went wrong.");
-            }
-        }
-
-        for (int i = 0; i<worldRows.size(); i++) {
-            Domain tempDom = worldRows.get(i);
-            if (tempDom.getDomSize() < 1) {
-                throw new Exception("AC3 has deemed this to be impossible, something went wrong.");
-            }
-        }
-
-        PicrossWorld finalResult = solveBacktrack(trialWorld);
-        if (finalResult == null) {
-            throw new Exception("Backtracking has deemed this to be impossible, something went wrong.");
-        }
-
-        return null; //TODO: NEED TO FIX THIS
+        PicrossWorld solutionWorld = solveBacktrack(trialWorld);
+        return translateToArray(solutionWorld.getRowDomains(), solutionWorld.getColDomains());
     }
 
     public static PicrossWorld solveBacktrack(PicrossWorld world) {
