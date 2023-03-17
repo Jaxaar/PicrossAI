@@ -52,6 +52,8 @@ public class PicrossPuzzle {
     //Deep-copy
     public PicrossPuzzle(PicrossPuzzle old){
         board = new boolean[old.board.length][old.board[0].length];
+        colClues = new ArrayList<>();
+        rowClues = new ArrayList<>();
         for(int i  = 0; i < board.length; i++){
             for(int j = 0; j < board[0].length; j++){
                 board[i][j] = old.board[i][j];
