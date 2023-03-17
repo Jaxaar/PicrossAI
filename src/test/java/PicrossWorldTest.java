@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PicrossWorldTest {
@@ -8,8 +10,14 @@ class PicrossWorldTest {
     void AC3ForwardingTest() {
         PicrossPuzzle pz = new PicrossPuzzle(10,10);
         PicrossWorld pw = new PicrossWorld(pz);
-        System.out.println(pw);
+        //System.out.println(pw.toString());
         pw.AC3Forwarding();
-        System.out.println(pw);
+
+        for(int i=0; i<10; i++)
+        {
+            System.out.println();
+        }
+
+        //System.out.println(pw.toString());
     }
 }

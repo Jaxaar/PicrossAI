@@ -95,13 +95,16 @@ public class PicrossWorld {
                 //Checks if the specified spot in the column domains has both true and false. If both are present, nothing happens to the domain of the target.
                 for(int j=0; j<colDomains.size(); j++)
                 {
-                    if(colDomains.get(j).getInstance(j)[i])
+                    for(int k=0; k<colDomains.get(j).getDomSize(); k++)
                     {
-                        hasTrue = true;
-                    }
-                    else
-                    {
-                        hasFalse = true;
+                        if(colDomains.get(j).getInstance(k)[i])
+                        {
+                            hasTrue = true;
+                        }
+                        else
+                        {
+                            hasFalse = true;
+                        }
                     }
 
                     //If one is false, then changes are possible to the domains.
@@ -157,5 +160,22 @@ public class PicrossWorld {
                 }
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        String result = "";
+
+        for(int i=0; i<rowDomains.size(); i++)
+        {
+            result += rowDomains.get(i).toString() + " ";
+        }
+
+        for(int i=0; i<colDomains.size(); i++)
+        {
+            result += colDomains.get(i).toString() + " ";
+        }
+
+        return result;
     }
 }
