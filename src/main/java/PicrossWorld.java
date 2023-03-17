@@ -165,15 +165,14 @@ public class PicrossWorld {
     @Override
     public String toString() {
         String result = "";
-
         for(int i=0; i<rowDomains.size(); i++)
         {
-            result += rowDomains.get(i).toString() + " ";
+            result += rowDomains.get(i).toString() + " \n";
         }
 
         for(int i=0; i<colDomains.size(); i++)
         {
-            result += colDomains.get(i).toString() + " ";
+            result += colDomains.get(i).toString() + " \n";
         }
 
         return result;
