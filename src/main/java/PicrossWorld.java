@@ -1,4 +1,7 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class PicrossWorld {
 
@@ -59,6 +62,95 @@ public class PicrossWorld {
     }
 
     public void AC3Forwarding() {
+        Queue<ArrayList<Domain>> q = new PriorityQueue<>();
 
+        q.add(rowDomains);
+        q.add(colDomains);
+
+        while(!q.isEmpty())
+        {
+            boolean isRow = false;
+            Boolean hasChanged = false;
+
+            ArrayList<Domain> target = q.poll();
+
+            //Checks if target is the rows or the columns.
+            if(target == rowDomains)
+            {
+               isRow = true;
+            }
+
+            for(int i=0; i<target.size(); i++)
+            {
+                boolean hasTrue = false;
+                boolean hasFalse = false;
+
+                Domain focus = target.get(i);
+
+                //Checks if the specified spot in the column domains has both true and false. If both are present, nothing happens to the domain of the target.
+                for(int j=0; j<colDomains.size(); j++)
+                {
+                    if(colDomains.get(j).getInstance(j)[i])
+                    {
+                        hasTrue = true;
+                    }
+                    else
+                    {
+                        hasFalse = true;
+                    }
+
+                    //If one is false, then changes are possible to the domains.
+                    if(!hasTrue || !hasFalse)
+                    {
+                        //If true was what was present in the col domain
+                        if(hasTrue)
+                        {
+                            ArrayList<boolean[]> domain = focus.getDom();
+                            ArrayList<boolean[]> newList = new ArrayList<>();
+
+                            for(int k = 0; k<domain.size(); k++)
+                            {
+                                if(domain.get(k)[j])
+                                {
+                                    newList.add(domain.get(k));
+                                    hasChanged = true;
+                                }
+                            }
+
+                            focus.setDom(newList);
+                        }
+                        else //If false was what was present in the col domain
+                        {
+                            ArrayList<boolean[]> domain = focus.getDom();
+                            ArrayList<boolean[]> newList = new ArrayList<>();
+
+                            for(int k = 0; k<domain.size(); k++)
+                            {
+                                if(!domain.get(k)[j])
+                                {
+                                    newList.add(domain.get(k));
+                                    hasChanged = true;
+                                }
+                            }
+
+                            focus.setDom(newList);
+                        }
+                    }
+                }
+            }
+
+            //If domains have been altered, adds the perpendicular lines to the queue
+            if(hasChanged)
+            {
+                if(isRow)
+                {
+                    q.add(colDomains);
+                }
+                else
+                {
+                    q.add(rowDomains);
+                }
+            }
+        }
     }
 }

@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -66,9 +67,6 @@ public class Domain {
             placeClue(pc, cluesHandled+1, i + currentClue, newPos);
         }
 
-
-
-
     }
 
     public static boolean[] fillInClue(int start, int length, boolean[] arr){
@@ -91,4 +89,9 @@ public class Domain {
     }
 
     public int getDomSize() { return dom.size(); }
+
+    public void setDom(ArrayList<boolean[]> replacement)
+    {
+        dom = replacement;
+    }
 }

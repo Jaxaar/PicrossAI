@@ -197,8 +197,8 @@ public class PicrossSolver {
 
     /**
      *
-     * @param rowDomain
-     * @param colDomain
+     * @param rowDomain The domains for each row
+     * @param colDomain The domains for each column
      * @return A 2D array of the board, as determined by the remaining domains.
      * @throws Exception if there is more than one domain for a row or column
      */
