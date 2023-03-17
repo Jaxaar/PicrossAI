@@ -1,20 +1,50 @@
 import java.util.ArrayList;
 
 public class PicrossSolver {
+    public static boolean[][] solveFullPuzzle(PicrossPuzzle puzzle) throws Exception {
+        PicrossWorld trialWorld = new PicrossWorld(puzzle);
+        trialWorld.AC3Forwarding();
+        ArrayList<Domain> worldCols = trialWorld.getColDomains();
+        ArrayList<Domain> worldRows = trialWorld.getRowDomains();
+        for (int i = 0; i<worldCols.size(); i++) {
+            Domain tempDom = worldCols.get(i);
+            if (tempDom.getDomSize() < 1) {
+                throw new Exception("AC3 has deemed this to be impossible, something went wrong.");
+            }
+        }
 
-    public static boolean[][] solveBacktrack(PicrossPuzzle puzzle){
-        boolean[][] board = new boolean[puzzle.getRows()][puzzle.getCols()];
+        for (int i = 0; i<worldRows.size(); i++) {
+            Domain tempDom = worldRows.get(i);
+            if (tempDom.getDomSize() < 1) {
+                throw new Exception("AC3 has deemed this to be impossible, something went wrong.");
+            }
+        }
 
-        // While (worldWorks)
-        //       AC3  thisWorld.ac3Forwarding();
-        //       Choose a world
-        //       Backtrack?
+        boolean[][] finalResult = solveBacktrack(trialWorld);
+        if (finalResult == null) {
+            throw new Exception("Backtracking has deemed this to be impossible, something went wrong.");
+        }
 
+        return finalResult;
+    }
 
+    public static boolean[][] solveBacktrack(PicrossWorld world) {
+        boolean[][] board = new boolean[world.getPuzzle().getRows()][world.getPuzzle().getCols()];
+        try {
+            board = translateToArray(world.getRowDomains(), world.getColDomains());
+        }
+        catch(Exception e) {
+            return null;
+        }
 
+        if (checkAnswer(world.getPuzzle(), board)) {
+            return board;
+        }
 
-
-        return board;
+        //ADD THE REST OF THE BACKTRACK CALC HERE (NOTE SOME OF ABOVE MAY BE DUE TO CHANGE)
+        //ADD THE REST OF THE BACKTRACK CALC HERE (NOTE SOME OF ABOVE MAY BE DUE TO CHANGE)
+        //ADD THE REST OF THE BACKTRACK CALC HERE (NOTE SOME OF ABOVE MAY BE DUE TO CHANGE)
+        return solveBacktrack(world);
     }
 
 
@@ -23,7 +53,7 @@ public class PicrossSolver {
      * @param puzzle The puzzle that is being double checked for correctness.
      * @return True if valid solution, False if not valid
      */
-    public boolean checkAnswer(PicrossPuzzle puzzle, Boolean[][] board)
+    public static boolean checkAnswer(PicrossPuzzle puzzle, boolean[][] board)
     {
         //Reference code:
         //PicrossPuzzle pz = new PicrossPuzzle(10,10);
@@ -139,7 +169,7 @@ public class PicrossSolver {
      * @return A 2D array of the board, as determined by the remaining domains.
      * @throws Exception if there is more than one domain for a row or column
      */
-    public Boolean[][] translateToArray(ArrayList<Domain> rowDomain, ArrayList<Domain> colDomain) throws Exception
+    public static boolean[][] translateToArray(ArrayList<Domain> rowDomain, ArrayList<Domain> colDomain) throws Exception
     {
         for(int i=0; i<rowDomain.size(); i++)
         {
@@ -154,7 +184,7 @@ public class PicrossSolver {
             }
         }
 
-        Boolean[][] board = new Boolean[rowDomain.size()][colDomain.size()];
+        boolean[][] board = new boolean[rowDomain.size()][colDomain.size()];
 
         for(int i=0; i<rowDomain.size(); i++)
         {

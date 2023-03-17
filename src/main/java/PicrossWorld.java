@@ -42,15 +42,19 @@ public class PicrossWorld {
         }
     }
 
-    //ONLY USE IN THE CONSTRUCTOR, Sets Domains = to all possibilites given the puzzle
-    private void generateDomains(){
-
+    public ArrayList<Domain> getColDomains() {
+        return colDomains;
     }
 
+    public ArrayList<Domain> getRowDomains() {
+        return rowDomains;
+    }
 
+    public PicrossPuzzle getPuzzle() {
+        return puzzle;
+    }
 
-
-    public void AC3Forwarding(){
+    public void AC3Forwarding() {
 
     }
 }
