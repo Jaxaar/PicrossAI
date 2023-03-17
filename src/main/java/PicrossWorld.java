@@ -13,6 +13,8 @@ public class PicrossWorld {
     public PicrossWorld(PicrossPuzzle pz){
         //Add the board itself
         puzzle = pz;
+        colDomains = new ArrayList<>();
+        rowDomains = new ArrayList<>();
 
         //Add the column domains for that specific board
         for(int i = 0; i<pz.getCols(); i++) {
@@ -31,6 +33,8 @@ public class PicrossWorld {
     public PicrossWorld(PicrossWorld wld){
         //Copy the entire puzzle (deep copy)
         puzzle = new PicrossPuzzle(wld.puzzle);
+        colDomains = new ArrayList<>();
+        rowDomains = new ArrayList<>();
 
         //Column Domains
         for (int i=0; i<puzzle.getCols(); i++) {

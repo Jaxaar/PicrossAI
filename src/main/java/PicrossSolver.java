@@ -3,29 +3,8 @@ import java.util.ArrayList;
 public class PicrossSolver {
     public static boolean[][] solveFullPuzzle(PicrossPuzzle puzzle) throws Exception {
         PicrossWorld trialWorld = new PicrossWorld(puzzle);
-        trialWorld.AC3Forwarding();
-        ArrayList<Domain> worldCols = trialWorld.getColDomains();
-        ArrayList<Domain> worldRows = trialWorld.getRowDomains();
-        for (int i = 0; i<worldCols.size(); i++) {
-            Domain tempDom = worldCols.get(i);
-            if (tempDom.getDomSize() < 1) {
-                throw new Exception("AC3 has deemed this to be impossible, something went wrong.");
-            }
-        }
-
-        for (int i = 0; i<worldRows.size(); i++) {
-            Domain tempDom = worldRows.get(i);
-            if (tempDom.getDomSize() < 1) {
-                throw new Exception("AC3 has deemed this to be impossible, something went wrong.");
-            }
-        }
-
-        PicrossWorld finalResult = solveBacktrack(trialWorld);
-        if (finalResult == null) {
-            throw new Exception("Backtracking has deemed this to be impossible, something went wrong.");
-        }
-
-        return null; //TODO: NEED TO FIX THIS
+        PicrossWorld solutionWorld = solveBacktrack(trialWorld);
+        return translateToArray(solutionWorld.getRowDomains(), solutionWorld.getColDomains());
     }
 
     public static PicrossWorld solveBacktrack(PicrossWorld world) {
@@ -60,20 +39,22 @@ public class PicrossSolver {
         //ADD THE REST OF THE BACKTRACK CALC HERE (NOTE SOME OF ABOVE MAY BE DUE TO CHANGE)
         for(int j = 0; j<world.getColDomains().size(); j++) {
             Domain d = world.getColDomains().get(j);
-            for (int i = 0; i<d.getDomSize(); i++) {
-                //Make a new world, replace one domain with a single
-                PicrossWorld newWorld = new PicrossWorld(world);
-                ArrayList<Domain> getColDom = newWorld.getColDomains();
-                getColDom.remove(j);
+            if (d.getDomSize() > 1) {
+                for (int i = 0; i < d.getDomSize(); i++) {
+                    //Make a new world, replace one domain with a single
+                    PicrossWorld newWorld = new PicrossWorld(world);
+                    ArrayList<Domain> getColDom = newWorld.getColDomains();
+                    getColDom.remove(j);
 
-                boolean[] instance = d.getInstance(i);
-                Domain newDom = new Domain(instance);
-                getColDom.add(j, newDom);
-                newWorld.setColDomains(getColDom);
+                    boolean[] instance = d.getInstance(i);
+                    Domain newDom = new Domain(instance);
+                    getColDom.add(j, newDom);
+                    newWorld.setColDomains(getColDom);
 
-                PicrossWorld temp = solveBacktrack(newWorld);
-                if (temp != null) {
-                    return temp;
+                    PicrossWorld temp = solveBacktrack(newWorld);
+                    if (temp != null) {
+                        return temp;
+                    }
                 }
             }
         }
