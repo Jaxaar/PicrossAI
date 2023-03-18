@@ -8,11 +8,21 @@ class PicrossWorldTest {
 
     @Test
     void AC3ForwardingTest() throws FileNotFoundException {
+<<<<<<< Updated upstream
         int size = 5;
         PicrossPuzzle pz = new PicrossPuzzle(size,size);
+=======
+//        PicrossPuzzle pz = new PicrossPuzzle(size,size);
+>>>>>>> Stashed changes
 //        PicrossPuzzle pz = new PicrossPuzzle("picross10x10.csv");
+        PicrossPuzzle pz = new PicrossPuzzle("picross5x5.csv");
+
+        System.out.println(pz);
+
+        int size = pz.getCols();
+
+
         PicrossWorld pw = new PicrossWorld(pz);
-//        System.out.println(pw.toString());
         PicrossWorld preAC3 = new PicrossWorld(pw);
         pw.AC3Forwarding();
 
@@ -21,7 +31,8 @@ class PicrossWorldTest {
             System.out.println();
         }
 
-//        System.out.println(pw.toString());
+//        System.out.println(preAC3.toString());
+        System.out.println(pw.toString());
 
         for(int i = 0; i < size; i++){
             System.out.println("PW row: " + i);
@@ -30,13 +41,30 @@ class PicrossWorldTest {
             System.out.println("PreAC3 row: " + i);
             int y = pw.getRowDomains().get(i).getDomSize();
             if(x != y){
-                System.out.println(x);
+                System.out.println("works");
                 assert true;
+                return;
             }
             else {
                 System.out.println(y);
             }
+
+            System.out.println("PW col: " + i);
+            x = pw.getColDomains().get(i).getDomSize();
+            System.out.println(x);
+            System.out.println("PreAC3 col: " + i);
+            y = pw.getColDomains().get(i).getDomSize();
+            if(x != y){
+                System.out.println("works");
+                assert true;
+                return;
+            }
+            else {
+                System.out.println(y);
+            }
+            System.out.println();
+
         }
-        assert false;
+        fail();
     }
 }
