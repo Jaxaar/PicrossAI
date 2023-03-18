@@ -1,41 +1,114 @@
    |1         
    |1 1 1 1 1 
 ___|__________
-1  |X O O O O 
+   |O O O O O 
    |O O O O O 
 5  |X X X X X 
    |O O O O O 
-   |O O O O O 
+1  |X O O O O 
 
 
 
 
 
-}{ 
+Row 0
 '{[false, false, false, false, false],}
  
-}{ 
+Row 1
 '{[false, false, false, false, false],}
  
+Row 2
+"{[true, true, true, true, true],}
+ 
+Row 3
 '{[false, false, false, false, false],}
  
+Row 4
+%{[true, false, false, false, false],
+$[false, true, false, false, false],
+$[false, false, true, false, false],
+$[false, false, false, true, false],
+%[false, false, false, false, true],}
+ 
+Col 0
 ${[true, false, true, false, false],
-$[false, true, false, false, true],}
+#[true, false, false, true, false],
+#[true, false, false, false, true],
+#[false, true, false, true, false],
+#[false, true, false, false, true],
+$[false, false, true, false, true],}
  
+Col 1
 %{[true, false, false, false, false],
-%[false, false, true, false, false],}
+$[false, true, false, false, false],
+$[false, false, true, false, false],
+$[false, false, false, true, false],
+%[false, false, false, false, true],}
  
+Col 2
 %{[true, false, false, false, false],
-%[false, false, true, false, false],}
+$[false, true, false, false, false],
+$[false, false, true, false, false],
+$[false, false, false, true, false],
+%[false, false, false, false, true],}
  
+Col 3
 %{[true, false, false, false, false],
-%[false, false, true, false, false],}
+$[false, true, false, false, false],
+$[false, false, true, false, false],
+$[false, false, false, true, false],
+%[false, false, false, false, true],}
  
+Col 4
 %{[true, false, false, false, false],
-%[false, false, true, false, false],}
+$[false, true, false, false, false],
+$[false, false, true, false, false],
+$[false, false, false, true, false],
+%[false, false, false, false, true],}
  
 
 PW row: 0
-0
+1
 PreAC3 row: 0
-works
+1
+PW col: 0
+6
+PreAC3 col: 0
+6
+
+PW row: 1
+1
+PreAC3 row: 1
+1
+PW col: 1
+5
+PreAC3 col: 1
+5
+
+PW row: 2
+1
+PreAC3 row: 2
+1
+PW col: 2
+5
+PreAC3 col: 2
+5
+
+PW row: 3
+1
+PreAC3 row: 3
+1
+PW col: 3
+5
+PreAC3 col: 3
+5
+
+PW row: 4
+5
+PreAC3 row: 4
+5
+PW col: 4
+5
+PreAC3 col: 4
+5
+

@@ -87,18 +87,29 @@ public class PicrossWorld {
 
                 Domain focus = target.get(i);
 
-                if (isRow) {
-                    hasChanged = searchDomains(focus, i, colDomains);
-                } else {
-                    hasChanged = searchDomains(focus, i, rowDomains);
+                if (isRow)
+                {
+                    if(searchDomains(focus, i, colDomains))
+                    {
+                        hasChanged = true;
+                    }
+                }
+                else
+                {
+                    if(searchDomains(focus, i, colDomains))
+                    {
+                        hasChanged = true;
+                    }
                 }
             }
 
             //If domains have been altered, adds the perpendicular lines to the queue
             if (hasChanged) {
                 if (isRow) {
+                    System.out.println("Hello Col");
                     q.add(colDomains);
                 } else {
+                    System.out.println("Hello Row");
                     q.add(rowDomains);
                 }
             }
@@ -127,12 +138,14 @@ public class PicrossWorld {
                     hasFalse = true;
                 }
 
-                //If one is false, then changes are possible to the domains.
-                if (hasTrue != hasFalse) {
-                    hasChanged = checkToRemove(focus, j, hasTrue);
-                }
-
                 if(hasTrue && hasFalse) {break;}
+            }
+
+
+            //If one is false, then changes are possible to the domains.
+            if (hasTrue != hasFalse) {
+                hasChanged = checkToRemove(focus, j, hasTrue);
+                System.out.println(hasChanged);
             }
         }
 
@@ -143,17 +156,17 @@ public class PicrossWorld {
     /**
      * Checks domains to see if anything can be removed.
      * @param focus The domains that are the focus of the removal.
-     * @param column The column that is being looked at for comparison.
+     * @param line The column that is being looked at for comparison.
      * @param comparison To compare the location's variable aginst
      * @return True if there are changes, false if not
      */
-    private boolean checkToRemove(Domain focus, int column, boolean comparison)
+    private boolean checkToRemove(Domain focus, int line, boolean comparison)
     {
         boolean hasChanged = false;
 
         for(int k = 0; k< focus.getDomSize(); k++)
         {
-            if(focus.getDom().get(k)[column] != comparison)
+            if(focus.getDom().get(k)[line] != comparison)
             {
                 focus.removeInstance(k);
                 hasChanged = true;
