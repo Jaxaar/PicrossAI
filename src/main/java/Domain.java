@@ -94,4 +94,8 @@ public class Domain {
     {
         dom = replacement;
     }
+
+    public boolean[] removeInstance(int i){
+        return dom.remove(i);
+    }
 }
