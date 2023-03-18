@@ -37,6 +37,6 @@ class PicrossWorldTest {
                 System.out.println(y);
             }
         }
-        assert false;
+        fail();
     }
 }

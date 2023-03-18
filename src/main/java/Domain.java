@@ -11,7 +11,7 @@ public class Domain {
 
     public Domain(PicrossPuzzle.PiClue pc, int size){
         dom = new ArrayList<>();
-        size = this.size;
+        this.size = size;
 
         boolean[] pos = new boolean[size];
         placeClue(pc, 0, 0, pos);
