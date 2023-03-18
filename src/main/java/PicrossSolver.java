@@ -204,11 +204,9 @@ public class PicrossSolver {
         for(int i=0; i<rowDomain.size(); i++)
         {
             Domain d = rowDomain.get(i);
-            System.out.println(d);
 
             for(int j=0; j<colDomain.size(); j++)
             {
-                System.out.println(d.getInstance(0)[j]);
                 board[i][j] = d.getInstance(0)[j];
             }
         }
@@ -220,7 +218,6 @@ public class PicrossSolver {
         StringBuilder out = new StringBuilder();
         //Get the sizes of the max number of clues for appropriate spacing
 
-        System.out.println(Arrays.deepToString(board));
         // Print Board
         for(int i = 0; i < board.length; i++){
             for(int j = 0; j < board[0].length; j++){
