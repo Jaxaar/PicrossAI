@@ -25,6 +25,7 @@ public class Domain {
     }
 
     public Domain(boolean[] instance) {
+        dom = new ArrayList<boolean[]>();
         dom.add(instance);
         size = 1;
     }
