@@ -90,11 +90,6 @@ public class Domain {
 
     public int getDomSize() { return dom.size(); }
 
-    public void setDom(ArrayList<boolean[]> replacement)
-    {
-        dom = replacement;
-    }
-
     public boolean[] removeInstance(int i){
         return dom.remove(i);
     }

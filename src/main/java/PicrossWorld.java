@@ -72,153 +72,91 @@ public class PicrossWorld {
         q.add(rowDomains);
         q.add(colDomains);
 
-        while(!q.isEmpty())
-        {
+        while (!q.isEmpty()) {
             boolean isRow = false;
             Boolean hasChanged = false;
 
             ArrayList<Domain> target = q.poll();
 
             //Checks if target is the rows or the columns.
-            if(target == rowDomains)
-            {
-               isRow = true;
+            if (target == rowDomains) {
+                isRow = true;
             }
 
-            for(int i=0; i<target.size(); i++)
-            {
+            for (int i = 0; i < target.size(); i++) {
                 boolean hasTrue = false;
                 boolean hasFalse = false;
 
                 Domain focus = target.get(i);
 
-                if(isRow)
-                {
+                if (isRow) {
                     //Checks if the specified spot in the column domains has both true and false. If both are present, nothing happens to the domain of the target.
-                    for(int j=0; j<colDomains.size(); j++)
-                    {
-                        for(int k=0; k<colDomains.get(j).getDomSize(); k++)
-                        {
-                            if(colDomains.get(j).getInstance(k)[i])
-                            {
+                    for (int j = 0; j < colDomains.size(); j++) {
+                        for (int k = 0; k < colDomains.get(j).getDomSize(); k++) {
+                            if (colDomains.get(j).getInstance(k)[i]) {
                                 hasTrue = true;
-                            }
-                            else
-                            {
+                            } else {
                                 hasFalse = true;
                             }
                         }
 
                         //If one is false, then changes are possible to the domains.
-                        if(!hasTrue || !hasFalse)
-                        {
-                            //If true was what was present in the col domain
-                            if(hasTrue)
-                            {
-                                ArrayList<boolean[]> domain = focus.getDom();
-                                ArrayList<boolean[]> newList = new ArrayList<>();
-
-                                for(int k = 0; k<domain.size(); k++)
-                                {
-                                    if(domain.get(k)[j])
-                                    {
-                                        newList.add(domain.get(k));
-                                        hasChanged = true;
-                                    }
-                                }
-
-                                focus.setDom(newList);
-                            }
-                            else //If false was what was present in the col domain
-                            {
-                                ArrayList<boolean[]> domain = focus.getDom();
-                                ArrayList<boolean[]> newList = new ArrayList<>();
-
-                                for(int k = 0; k<domain.size(); k++)
-                                {
-                                    if(!domain.get(k)[j])
-                                    {
-                                        newList.add(domain.get(k));
-                                        hasChanged = true;
-                                    }
-                                }
-
-                                focus.setDom(newList);
-                            }
+                        if (!hasTrue || !hasFalse) {
+                            hasChanged = checkToRemove(focus, j, hasTrue);
                         }
                     }
-                }
-                else
-                {
+                } else {
                     //Checks if the specified spot in the column domains has both true and false. If both are present, nothing happens to the domain of the target.
-                    for(int j=0; j<rowDomains.size(); j++)
-                    {
-                        for(int k=0; k<rowDomains.get(j).getDomSize(); k++)
-                        {
-                            if(rowDomains.get(j).getInstance(k)[i])
-                            {
+                    for (int j = 0; j < rowDomains.size(); j++) {
+                        for (int k = 0; k < rowDomains.get(j).getDomSize(); k++) {
+                            if (rowDomains.get(j).getInstance(k)[i]) {
                                 hasTrue = true;
-                            }
-                            else
-                            {
+                            } else {
                                 hasFalse = true;
                             }
                         }
 
                         //If one is false, then changes are possible to the domains.
-                        if(!hasTrue || !hasFalse)
-                        {
-                            //If true was what was present in the col domain
-                            if(hasTrue)
-                            {
-                                ArrayList<boolean[]> domain = focus.getDom();
-                                ArrayList<boolean[]> newList = new ArrayList<>();
-
-                                for(int k = 0; k<domain.size(); k++)
-                                {
-                                    if(domain.get(k)[j])
-                                    {
-                                        newList.add(domain.get(k));
-                                        hasChanged = true;
-                                    }
-                                }
-
-                                focus.setDom(newList);
-                            }
-                            else //If false was what was present in the col domain
-                            {
-                                ArrayList<boolean[]> domain = focus.getDom();
-                                ArrayList<boolean[]> newList = new ArrayList<>();
-
-                                for(int k = 0; k<domain.size(); k++)
-                                {
-                                    if(!domain.get(k)[j])
-                                    {
-                                        newList.add(domain.get(k));
-                                        hasChanged = true;
-                                    }
-                                }
-
-                                focus.setDom(newList);
-                            }
+                        if (!hasTrue || !hasFalse) {
+                            hasChanged = checkToRemove(focus, j, hasTrue);
                         }
                     }
                 }
             }
 
             //If domains have been altered, adds the perpendicular lines to the queue
-            if(hasChanged)
-            {
-                if(isRow)
-                {
+            if (hasChanged) {
+                if (isRow) {
                     q.add(colDomains);
-                }
-                else
-                {
+                } else {
                     q.add(rowDomains);
                 }
             }
         }
+    }
+
+
+    /**
+     * Checks domains to see if anything can be removed.
+     * @param focus The domains that are the focus of the removal.
+     * @param column The column that is being looked at for comparison.
+     * @param comparison To compare the location's variable aginst
+     * @return True if there are changes, false if not
+     */
+    private boolean checkToRemove(Domain focus, int column, boolean comparison)
+    {
+        boolean hasChanged = false;
+
+        for(int k = 0; k< focus.getDomSize(); k++)
+        {
+            if(focus.getDom().get(k)[column] != comparison)
+            {
+                focus.removeInstance(k);
+                hasChanged = true;
+            }
+        }
+
+        return hasChanged;
     }
 
     @Override
