@@ -7,6 +7,10 @@
    |O O O O O 
 1  |X O O O O 
 
+Hello Row
+Hello Col
+Hello Row
+Hello Col
 
 
 
@@ -24,47 +28,22 @@
 '{[false, false, false, false, false],}
  
 Row 4
-%{[true, false, false, false, false],
-$[false, true, false, false, false],
-$[false, false, true, false, false],
-$[false, false, false, true, false],
-%[false, false, false, false, true],}
+&{[true, false, false, false, false],}
  
 Col 0
-${[true, false, true, false, false],
-#[true, false, false, true, false],
-#[true, false, false, false, true],
-#[false, true, false, true, false],
-#[false, true, false, false, true],
-$[false, false, true, false, true],}
+%{[false, false, true, false, true],}
  
 Col 1
-%{[true, false, false, false, false],
-$[false, true, false, false, false],
-$[false, false, true, false, false],
-$[false, false, false, true, false],
-%[false, false, false, false, true],}
+&{[false, false, true, false, false],}
  
 Col 2
-%{[true, false, false, false, false],
-$[false, true, false, false, false],
-$[false, false, true, false, false],
-$[false, false, false, true, false],
-%[false, false, false, false, true],}
+&{[false, false, true, false, false],}
  
 Col 3
-%{[true, false, false, false, false],
-$[false, true, false, false, false],
-$[false, false, true, false, false],
-$[false, false, false, true, false],
-%[false, false, false, false, true],}
+&{[false, false, true, false, false],}
  
 Col 4
-%{[true, false, false, false, false],
-$[false, true, false, false, false],
-$[false, false, true, false, false],
-$[false, false, false, true, false],
-%[false, false, false, false, true],}
+&{[false, false, true, false, false],}
  
 
 PW row: 0
@@ -72,7 +51,7 @@
 PreAC3 row: 0
 1
 PW col: 0
-6
+1
 PreAC3 col: 0
 6
 
@@ -81,7 +60,7 @@
 PreAC3 row: 1
 1
 PW col: 1
-5
+1
 PreAC3 col: 1
 5
 
@@ -90,7 +69,7 @@
 PreAC3 row: 2
 1
 PW col: 2
-5
+1
 PreAC3 col: 2
 5
 
@@ -99,16 +78,16 @@
 PreAC3 row: 3
 1
 PW col: 3
-5
+1
 PreAC3 col: 3
 5
 
 PW row: 4
-5
+1
 PreAC3 row: 4
 5
 PW col: 4
-5
+1
 PreAC3 col: 4
 5
 

@@ -96,7 +96,7 @@ public class PicrossWorld {
                 }
                 else
                 {
-                    if(searchDomains(focus, i, colDomains))
+                    if(searchDomains(focus, i, rowDomains))
                     {
                         hasChanged = true;
                     }
@@ -132,9 +132,12 @@ public class PicrossWorld {
             boolean hasFalse = false;
 
             for (int k = 0; k < lineDomains.get(j).getDomSize(); k++) {
-                if (lineDomains.get(j).getInstance(k)[line]) {
+                if (lineDomains.get(j).getInstance(k)[line])
+                {
                     hasTrue = true;
-                } else {
+                }
+                else
+                {
                     hasFalse = true;
                 }
 
@@ -144,8 +147,10 @@ public class PicrossWorld {
 
             //If one is false, then changes are possible to the domains.
             if (hasTrue != hasFalse) {
-                hasChanged = checkToRemove(focus, j, hasTrue);
-                System.out.println(hasChanged);
+                if(checkToRemove(focus, j, hasTrue))
+                {
+                    hasChanged=true;
+                }
             }
         }
 
@@ -164,10 +169,8 @@ public class PicrossWorld {
     {
         boolean hasChanged = false;
 
-        for(int k = 0; k< focus.getDomSize(); k++)
-        {
-            if(focus.getDom().get(k)[line] != comparison)
-            {
+        for(int k = 0; k< focus.getDomSize(); k++) {
+            if (focus.getDom().get(k)[line] != comparison) {
                 focus.removeInstance(k);
                 hasChanged = true;
             }
