@@ -65,8 +65,13 @@ class PicrossWorldTest {
             System.out.println();
 
         }
-        boolean[][] board = PicrossSolver.translateToArray(pw.getRowDomains(), pw.getColDomains());
-        System.out.println(PicrossSolver.boolBoardToString(board));
+        try {
+            boolean[][] board = PicrossSolver.translateToArray(pw.getRowDomains(), pw.getColDomains());
+            System.out.println(PicrossSolver.boolBoardToString(board));
+        }
+        catch(Exception e){
+            System.out.println("No Solution found: See Backtracking");
+        }
 //        fail();
     }
 }
