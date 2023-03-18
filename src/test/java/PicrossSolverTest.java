@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,10 +8,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class PicrossSolverTest {
 
     @Test
-    void solveFullPuzzleTest(){
-        PicrossPuzzle pz = new PicrossPuzzle(10,10);
+    void solveFullPuzzleTest() throws FileNotFoundException {
+//        PicrossPuzzle pz = new PicrossPuzzle(10,10);
+        PicrossPuzzle pz = new PicrossPuzzle("picross5x5.csv");
+
         try{
-            System.out.println(Arrays.deepToString(PicrossSolver.solveFullPuzzle(pz)));
+            boolean[][] board = PicrossSolver.solveFullPuzzle(pz);
+            System.out.println(Arrays.deepToString(board));
+//            System.out.println(PicrossSolver.boolBoardToString(board));
+
         }
         catch (Exception e){
             System.out.println(e);

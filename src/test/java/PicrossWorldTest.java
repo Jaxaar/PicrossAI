@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PicrossWorldTest {
 
     @Test
-    void AC3ForwardingTest() throws FileNotFoundException {
+    void AC3ForwardingTest() throws Exception {
 
         //PicrossPuzzle pz = new PicrossPuzzle(5,5);
 
@@ -65,6 +65,8 @@ class PicrossWorldTest {
             System.out.println();
 
         }
+        boolean[][] board = PicrossSolver.translateToArray(pw.getRowDomains(), pw.getColDomains());
+        System.out.println(PicrossSolver.boolBoardToString(board));
 //        fail();
     }
 }
