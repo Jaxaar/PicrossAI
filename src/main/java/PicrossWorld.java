@@ -74,7 +74,7 @@ public class PicrossWorld {
 
         while (!q.isEmpty()) {
             boolean isRow = false;
-            Boolean hasChanged = false;
+            boolean hasChanged = false;
 
             ArrayList<Domain> target = q.poll();
 
@@ -84,16 +84,12 @@ public class PicrossWorld {
             }
 
             for (int i = 0; i < target.size(); i++) {
-                boolean hasTrue = false;
-                boolean hasFalse = false;
 
                 Domain focus = target.get(i);
 
                 if (isRow) {
-                    //Checks if the specified spot in the column domains has both true and false. If both are present, nothing happens to the domain of the target.
                     hasChanged = searchDomains(focus, i, colDomains);
                 } else {
-                    //Checks if the specified spot in the column domains has both true and false. If both are present, nothing happens to the domain of the target.
                     hasChanged = searchDomains(focus, i, rowDomains);
                 }
             }
@@ -118,22 +114,25 @@ public class PicrossWorld {
      */
     private boolean searchDomains(Domain focus, int line, ArrayList<Domain> lineDomains)
     {
-        boolean hasTrue = false;
-        boolean hasFalse = false;
         boolean hasChanged = false;
 
         for (int j = 0; j < lineDomains.size(); j++) {
+            boolean hasTrue = false;
+            boolean hasFalse = false;
+
             for (int k = 0; k < lineDomains.get(j).getDomSize(); k++) {
                 if (lineDomains.get(j).getInstance(k)[line]) {
                     hasTrue = true;
                 } else {
                     hasFalse = true;
                 }
-            }
 
-            //If one is false, then changes are possible to the domains.
-            if (!hasTrue || !hasFalse) {
-                hasChanged = checkToRemove(focus, j, hasTrue);
+                //If one is false, then changes are possible to the domains.
+                if (hasTrue != hasFalse) {
+                    hasChanged = checkToRemove(focus, j, hasTrue);
+                }
+
+                if(hasTrue && hasFalse) {break;}
             }
         }
 

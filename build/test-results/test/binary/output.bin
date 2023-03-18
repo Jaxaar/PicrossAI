@@ -1,24 +1,41 @@
+   |1         
+   |1 1 1 1 1 
+___|__________
+1  |X O O O O 
+   |O O O O O 
+5  |X X X X X 
+   |O O O O O 
+   |O O O O O 
 
 
 
+
+
+}{ 
+'{[false, false, false, false, false],}
+ 
+}{ 
+'{[false, false, false, false, false],}
+ 
+'{[false, false, false, false, false],}
+ 
+${[true, false, true, false, false],
+$[false, true, false, false, true],}
+ 
+%{[true, false, false, false, false],
+%[false, false, true, false, false],}
+ 
+%{[true, false, false, false, false],
+%[false, false, true, false, false],}
+ 
+%{[true, false, false, false, false],
+%[false, false, true, false, false],}
+ 
+%{[true, false, false, false, false],
+%[false, false, true, false, false],}
+ 
 
 PW row: 0
-6
+0
 PreAC3 row: 0
-6
-PW row: 1
-1
-PreAC3 row: 1
-1
-PW row: 2
-3
-PreAC3 row: 2
-3
-PW row: 3
-1
-PreAC3 row: 3
-1
-PW row: 4
-3
-PreAC3 row: 4
-3
+works
