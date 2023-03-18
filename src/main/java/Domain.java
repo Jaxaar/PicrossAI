@@ -13,7 +13,7 @@ public class Domain {
         dom = new ArrayList<>();
         size = this.size;
 
-        boolean[] pos = new boolean[10];
+        boolean[] pos = new boolean[size];
         placeClue(pc, 0, 0, pos);
 
 //            int initStart = 0;  //Need to cycle through each clue number and every possible spot.

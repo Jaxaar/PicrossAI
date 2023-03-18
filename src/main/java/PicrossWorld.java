@@ -91,36 +91,10 @@ public class PicrossWorld {
 
                 if (isRow) {
                     //Checks if the specified spot in the column domains has both true and false. If both are present, nothing happens to the domain of the target.
-                    for (int j = 0; j < colDomains.size(); j++) {
-                        for (int k = 0; k < colDomains.get(j).getDomSize(); k++) {
-                            if (colDomains.get(j).getInstance(k)[i]) {
-                                hasTrue = true;
-                            } else {
-                                hasFalse = true;
-                            }
-                        }
-
-                        //If one is false, then changes are possible to the domains.
-                        if (!hasTrue || !hasFalse) {
-                            hasChanged = checkToRemove(focus, j, hasTrue);
-                        }
-                    }
+                    hasChanged = searchDomains(focus, i, colDomains);
                 } else {
                     //Checks if the specified spot in the column domains has both true and false. If both are present, nothing happens to the domain of the target.
-                    for (int j = 0; j < rowDomains.size(); j++) {
-                        for (int k = 0; k < rowDomains.get(j).getDomSize(); k++) {
-                            if (rowDomains.get(j).getInstance(k)[i]) {
-                                hasTrue = true;
-                            } else {
-                                hasFalse = true;
-                            }
-                        }
-
-                        //If one is false, then changes are possible to the domains.
-                        if (!hasTrue || !hasFalse) {
-                            hasChanged = checkToRemove(focus, j, hasTrue);
-                        }
-                    }
+                    hasChanged = searchDomains(focus, i, rowDomains);
                 }
             }
 
@@ -133,6 +107,37 @@ public class PicrossWorld {
                 }
             }
         }
+    }
+
+    /**
+     * Checks if the specified spot in the column domains has both true and false. If both are present, nothing happens to the domain of the target.
+     * @param focus The domain the changes are focused on.
+     * @param line Target line
+     * @param lineDomains domains to compare against
+     * @return True if changes are made, False otherwise
+     */
+    private boolean searchDomains(Domain focus, int line, ArrayList<Domain> lineDomains)
+    {
+        boolean hasTrue = false;
+        boolean hasFalse = false;
+        boolean hasChanged = false;
+
+        for (int j = 0; j < lineDomains.size(); j++) {
+            for (int k = 0; k < lineDomains.get(j).getDomSize(); k++) {
+                if (lineDomains.get(j).getInstance(k)[line]) {
+                    hasTrue = true;
+                } else {
+                    hasFalse = true;
+                }
+            }
+
+            //If one is false, then changes are possible to the domains.
+            if (!hasTrue || !hasFalse) {
+                hasChanged = checkToRemove(focus, j, hasTrue);
+            }
+        }
+
+        return hasChanged;
     }
 
 

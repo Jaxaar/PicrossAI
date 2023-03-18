@@ -8,7 +8,7 @@ class PicrossWorldTest {
 
     @Test
     void AC3ForwardingTest() throws FileNotFoundException {
-        int size = 10;
+        int size = 5;
         PicrossPuzzle pz = new PicrossPuzzle(size,size);
 //        PicrossPuzzle pz = new PicrossPuzzle("picross10x10.csv");
         PicrossWorld pw = new PicrossWorld(pz);
