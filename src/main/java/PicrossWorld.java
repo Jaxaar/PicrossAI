@@ -168,11 +168,13 @@ public class PicrossWorld {
         String result = "";
         for(int i=0; i<rowDomains.size(); i++)
         {
+            result += "Row " + i + "\n";
             result += rowDomains.get(i).toString() + " \n";
         }
 
         for(int i=0; i<colDomains.size(); i++)
         {
+            result += "Col " + i + "\n";
             result += colDomains.get(i).toString() + " \n";
         }
 
