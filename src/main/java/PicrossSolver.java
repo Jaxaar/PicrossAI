@@ -213,4 +213,23 @@ public class PicrossSolver {
         return board;
     }
 
+    public static String boolBoardToString(boolean[][] board){
+        StringBuilder out = new StringBuilder();
+        //Get the sizes of the max number of clues for appropriate spacing
+
+        // Print Board
+        for(int i = 0; i < board.length; i++){
+            for(int j = 0; j < board[0].length; j++){
+                if(board[i][j]){
+                    out.append("X").append(" ");
+                }
+                else{
+                    out.append("O").append(" ");
+                }
+            }
+            out.append("\n");
+        }
+        return out.toString();
+    }
+
 }

@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PicrossWorldTest {
 
     @Test
-    void AC3ForwardingTest() throws FileNotFoundException {
+    void AC3ForwardingTest() throws Exception {
 
         //PicrossPuzzle pz = new PicrossPuzzle(5,5);
 
@@ -64,6 +64,13 @@ class PicrossWorldTest {
             }
             System.out.println();
 
+        }
+        try {
+            boolean[][] board = PicrossSolver.translateToArray(pw.getRowDomains(), pw.getColDomains());
+            System.out.println(PicrossSolver.boolBoardToString(board));
+        }
+        catch(Exception e){
+            System.out.println("No Solution found: See Backtracking");
         }
 //        fail();
     }

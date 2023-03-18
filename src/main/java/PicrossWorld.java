@@ -106,10 +106,10 @@ public class PicrossWorld {
             //If domains have been altered, adds the perpendicular lines to the queue
             if (hasChanged) {
                 if (isRow) {
-                    System.out.println("Hello Col");
+//                    System.out.println("Hello Col");
                     q.add(colDomains);
                 } else {
-                    System.out.println("Hello Row");
+//                    System.out.println("Hello Row");
                     q.add(rowDomains);
                 }
             }
