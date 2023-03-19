@@ -97,7 +97,7 @@ public class PicrossSolver {
 
                     count++; //Count of true squares together.
 
-                    if(count>=clue) //If there are more true spaces together than should be.
+                    if(count>clue) //If there are more true spaces together than should be.
                     {
                         return false;
                     }
@@ -120,7 +120,7 @@ public class PicrossSolver {
                 }
             }
 
-            if(!outOfClues) //If Clues are left over when done with column.
+            if(q != puzzle.getColClue(i).size()-1 || q != puzzle.getColClue(i).size()-2) //If Clues are left over when done with column.
             {
                 return false;
             }
@@ -145,7 +145,7 @@ public class PicrossSolver {
 
                     count++; //Count of true squares together.
 
-                    if(count>=clue) //If there are more true spaces together than should be.
+                    if(count>clue) //If there are more true spaces together than should be.
                     {
                         return false;
                     }
@@ -168,7 +168,7 @@ public class PicrossSolver {
                 }
             }
 
-            if(!outOfClues) //If Clues are left over when done with column.
+            if(q != puzzle.getColClue(i).size()-1 || q != puzzle.getColClue(i).size()-2) //If Clues are left over when done with column.
             {
                 return false;
             }
