@@ -35,4 +35,23 @@ class DomainTest {
         }
         assert true;
     }
+
+    @Test
+    void domainGetInstanceTest() {
+
+        ArrayList<Integer> tempClues = new ArrayList<>();
+        tempClues.add(1);
+        tempClues.add(2);
+        tempClues.add(3);
+        PicrossPuzzle.PiClue pc = new PicrossPuzzle.PiClue(tempClues);
+
+        Domain d = new Domain(pc, 10);
+        System.out.println(d);
+        System.out.println("1st Instance");
+        System.out.println(Arrays.toString(d.getInstance(0)));
+        d.removeInstance(1);
+        System.out.println(Arrays.toString(d.getInstance(8)));
+
+        assert true;
+    }
 }
