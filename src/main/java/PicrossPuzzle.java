@@ -7,10 +7,12 @@ import java.util.Scanner;
 
 public class PicrossPuzzle {
 
-    private boolean[][] board; // Could be int??
-    private ArrayList<PiClue> colClues;
-    private ArrayList<PiClue> rowClues;
+    private boolean[][] board; // Stores the actual solution (Never referenced outside this class)
+    private ArrayList<PiClue> colClues; // Stores the clues that match each column
+    private ArrayList<PiClue> rowClues; // Stores the clues that match each Row
 
+
+    // Takes a board size and generates a new board at random and then generates the clues
     public PicrossPuzzle(int rows, int cols){
         board = new boolean[rows][cols];
         Random random = new Random();
@@ -25,6 +27,8 @@ public class PicrossPuzzle {
         fillClues();
     }
 
+    //Reads in a board from a CSV and generates a Picross Puzzle from it
+    // CSV MUST HAVE A , AT THE END OF EVERY LINE (So it's not a true csv)
     public PicrossPuzzle(String csvFileName) throws FileNotFoundException {
         Scanner scn = new Scanner(new File(csvFileName));
         scn.useDelimiter(",\\s*");
@@ -68,9 +72,9 @@ public class PicrossPuzzle {
         }
     }
 
-    public boolean[][] getBoard() {
-        return board;
-    }
+//    public boolean[][] getBoard() {
+//        return board;
+//    }
 
     public int getRows(){
         return board.length;
@@ -88,6 +92,7 @@ public class PicrossPuzzle {
         return rowClues.get(i);
     }
 
+    // Converts the board to a string with nice spacing
     @Override
     public String toString() {
         StringBuilder out = new StringBuilder();
@@ -120,6 +125,7 @@ public class PicrossPuzzle {
         return out.toString();
     }
 
+    // Helper method for toString: Creates the header block for the column clues
     private String getColClueString(int maxColClues, int maxRowClues){
         StringBuilder out = new StringBuilder();
 
@@ -143,6 +149,7 @@ public class PicrossPuzzle {
         return out.toString();
     }
 
+    // Helper Method for the toString: creates nice strings for the row clues
     private String getRowClueString(int maxRowClues, int row){
         String format = "%" + ((maxRowClues)*2) + "s |";
         if(maxRowClues == 0){
@@ -152,6 +159,7 @@ public class PicrossPuzzle {
         return String.format(format, getRowClue(row));
     }
 
+    // Helper method for the constructor: Generates the clues to match the board
     private void fillClues(){
         //Rows
         for(int i = 0; i < board.length; i++){
@@ -199,6 +207,8 @@ public class PicrossPuzzle {
     }
 
 
+    // Class which stores the clues: Mostly for code aesthetics
+    // Clues are stored in an arrayList and returned by getClue(number)
     static class PiClue {
 
         private ArrayList<Integer> clues;

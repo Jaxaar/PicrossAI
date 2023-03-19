@@ -37,6 +37,9 @@ public class Main {
 
                 PicrossPuzzle puzzle = new PicrossPuzzle(rows, cols);
                 board = PicrossSolver.solveFullPuzzle(puzzle);
+                System.out.println("Problem: ");
+                System.out.println(puzzle);
+                System.out.println("\nSolution: ");
                 System.out.println(PicrossSolver.boolBoardToString(board));
                 exitLoop = true;
             }
@@ -45,6 +48,9 @@ public class Main {
                 boolean[][] board = new boolean[5][5];
                 PicrossPuzzle puzzle = new PicrossPuzzle("picross5x5.csv");
                 board = PicrossSolver.solveFullPuzzle(puzzle);
+                System.out.println("Problem: ");
+                System.out.println(puzzle);
+                System.out.println("\nSolution: ");
                 System.out.println(PicrossSolver.boolBoardToString(board));
                 exitLoop = true;
             }
@@ -53,6 +59,9 @@ public class Main {
                 boolean[][] board = new boolean[10][10];
                 PicrossPuzzle puzzle = new PicrossPuzzle("picross10x10.csv");
                 board = PicrossSolver.solveFullPuzzle(puzzle);
+                System.out.println("Problem: ");
+                System.out.println(puzzle);
+                System.out.println("Solution: ");
                 System.out.println(PicrossSolver.boolBoardToString(board));
                 exitLoop = true;
             }

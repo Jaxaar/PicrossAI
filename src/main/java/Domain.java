@@ -4,32 +4,25 @@ import java.util.Arrays;
 
 public class Domain {
 
-    private ArrayList<boolean[]> dom;
+    private ArrayList<boolean[]> dom; // The list of possible solutions for any given line
     private int size;
 
-    //Could use a recursive algorithm that repeatedly places it at all possible spots
 
+    //Main Constructor which takes a clue and line length and generates all possible solutions
     public Domain(PicrossPuzzle.PiClue pc, int size){
         dom = new ArrayList<>();
         this.size = size;
 
         boolean[] pos = new boolean[size];
-        placeClue(pc, 0, 0, pos);
-
-//            int initStart = 0;  //Need to cycle through each clue number and every possible spot.
-//            boolean[] rowInstance = new boolean[size];
-//            for(int i=0; i<pc.size(); i++) {
-//                rowInstance = formInstance(pc.getClue(i), initStart, rowInstance);
-//            }
-        //System.out.println("Domain Constructor Not Written YET!!!");
+        placeClue(pc, 0, 0, pos); // Generates all possible solutions, Recursively
     }
 
+    //Deep-Copy
     public Domain(boolean[] instance) {
         dom = new ArrayList<boolean[]>();
         dom.add(instance);
         size = 1;
     }
-
 
     public boolean[] getInstance(int i){
         return dom.get(i);
@@ -39,6 +32,7 @@ public class Domain {
         return dom;
     }
 
+    //Recursively loops by filling the first segment in every place it can go and calling itself on the remaining segments
     public void placeClue(PicrossPuzzle.PiClue pc, int cluesHandled, int last1, boolean[] possibility){
         if(cluesHandled >= pc.size()){
             dom.add(possibility);
@@ -70,6 +64,7 @@ public class Domain {
 
     }
 
+    // Loops through the next length spaces and marks them true
     public static boolean[] fillInClue(int start, int length, boolean[] arr){
         for(int i = start; i < start+length; i++){
             arr[i] = true;
