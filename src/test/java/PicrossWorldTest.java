@@ -9,10 +9,10 @@ class PicrossWorldTest {
     @Test
     void AC3ForwardingTest() throws Exception {
 
-        //PicrossPuzzle pz = new PicrossPuzzle(5,5);
+        PicrossPuzzle pz = new PicrossPuzzle(10,10);
 
 //        PicrossPuzzle pz = new PicrossPuzzle("picross10x10.csv");
-        PicrossPuzzle pz = new PicrossPuzzle("picross5x5.csv");
+//        PicrossPuzzle pz = new PicrossPuzzle("picross5x5.csv");
 
         System.out.println(pz);
 
@@ -70,8 +70,10 @@ class PicrossWorldTest {
             System.out.println(PicrossSolver.boolBoardToString(board));
         }
         catch(Exception e){
+            System.out.println(pw.getRowDomains());
             System.out.println("No Solution found: See Backtracking");
         }
+        System.out.println("END");
 //        fail();
     }
 }
