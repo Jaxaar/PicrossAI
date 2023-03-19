@@ -19,13 +19,13 @@ public class PicrossWorld {
 
         //Add the column domains for that specific board
         for(int i = 0; i<pz.getCols(); i++) {
-            Domain newDom = new Domain(pz.getColClue(i), pz.getCols());
+            Domain newDom = new Domain(pz.getColClue(i), pz.getRows());
             colDomains.add(newDom);
         }
 
         //Add the row domains for that specific board
         for(int i = 0; i<pz.getRows(); i++) {
-            Domain newDom = new Domain(pz.getRowClue(i), pz.getRows());
+            Domain newDom = new Domain(pz.getRowClue(i), pz.getCols());
             rowDomains.add(newDom);
         }
     }
@@ -39,13 +39,13 @@ public class PicrossWorld {
 
         //Column Domains
         for (int i=0; i<puzzle.getCols(); i++) {
-            Domain newDom = new Domain(puzzle.getColClue(i), puzzle.getCols());
+            Domain newDom = new Domain(puzzle.getColClue(i), puzzle.getRows());
             colDomains.add(newDom);
         }
 
         //Row Domains
         for (int i=0; i<puzzle.getRows(); i++) {
-            Domain newDom = new Domain(puzzle.getRowClue(i), puzzle.getRows());
+            Domain newDom = new Domain(puzzle.getRowClue(i), puzzle.getCols());
             rowDomains.add(newDom);
         }
     }
