@@ -144,7 +144,12 @@ public class PicrossPuzzle {
     }
 
     private String getRowClueString(int maxRowClues, int row){
-        return String.format("%" + ((maxRowClues)*2) + "s |", getRowClue(row));
+        String format = "%" + ((maxRowClues)*2) + "s |";
+        if(maxRowClues == 0){
+            format = "%s |";
+        }
+
+        return String.format(format, getRowClue(row));
     }
 
     private void fillClues(){
